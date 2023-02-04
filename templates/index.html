@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="section container">
+                <title> SafeTravels! Home Page </title>
+                <div class="row gy-3"> 
+                    <h1>SafeTravels!</h1>
+                    <form> <!--Ask Nate whether to use method or action to send form results to backend-->
+                            
+                            <div class="col1 gx-2">
+                                <label for="City">City:</label>
+                                <input type="text" id="City" name="City">
+                            </div>
+
+                            <div class="col2">
+                                <label for="Country">Country:</label>
+                                <input type="text" id="Country" name="Country"><br><br>
+                            </div>
+                        
+                            <div class="col3 gx-2">
+                                <label for="startDate">Start Date:</label>
+                                <input type="date" id="startDate" name="startDate">
+                            </div>
+
+                            <div class="col4">
+                                <label for="endDate">End Date:</label>
+                                <input type="date" id="endDate" name="endDate"><br><br>
+                            </div>
+                            <input type="submit" value="Submit">
+                        
+                    </form>             
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="app.js"></script>
+</html>
