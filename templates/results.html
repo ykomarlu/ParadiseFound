@@ -14,8 +14,8 @@
 		<!--Header-->
 		<div class="row align-items-center my-3 px-3">
 			<div class="col">
-				<h1>Sidney,</h1>
-				<h3>Australia</h3>
+				<h1>{{ city }},</h1>
+				<h3>{{ country }}</h3>
 			</div>
 			<div class="col">
 				<h2 class="text-end align-middle">SafeTravels</h2>
@@ -49,7 +49,25 @@
 			</div>
 		</div>
 		<hr>
-		<!--Events-->
+		<div class="section mx-auto">
+			<h2>Events</h2>
+			<table class="table table-striped table-responsive my-5 w-100" style="text-align: left; table-layout: fixed">
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Birthday</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for event in events %}
+					<tr scope="row">
+						<td>{{ event["name"] }}</td>
+						<td>{{ event["url"] }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 </body>
