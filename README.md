@@ -8,3 +8,9 @@ UGA Hacks 8
 `pip install requests`
 
 `pip install meteostat`
+
+`pip install matplotlib`
+
+`pip install geopy`
+
+`pip install Nominatim`
