@@ -21,3 +21,6 @@ The following libraries are required to run this locally:
 `pip install geopy`
 
 `pip install Nominatim`
+
+### Authors
+Made by Nathaniel Kite, Yushus Komarlu, Daniel Grigsby, and Venn Reddy
