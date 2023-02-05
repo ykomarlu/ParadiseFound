@@ -1,7 +1,14 @@
-# SafeTravels
-UGA Hacks 8
+# Paradise Found
+
+ParadiseFound is a one-stop-shop for all the information you need to plan your next vacation! Users simply enter when and where their next vacation will be, and ParadiseFound takes care of the rest, providing a wide range of events, lodgings, weather, and more for users to explore during their stay.
+
+Developed for UGAHacks8.
+
+Built with HTML, CSS, Bootstrap, and Python, as well as several APIs.
 
 #### Dependencies
+
+The following libraries are required to run this locally:
 
 `pip install flask`
 
