@@ -21,39 +21,68 @@
 				<h2 class="text-end align-middle">SafeTravels</h2>
 			</div>
 		</div>
-		<!--Weather-->
-		<h2 class="text-center">Weather</h2>
-		<hr>
 		<div class="px-3">
-			<div class="row d-flex">
-				<div class="col-2 d-flex flex-column align-items-center">
-					<div class="col flex-col mx-auto">
-						<img class="m-3" src="/static/img/sunny.png" style="width:130px; height:125px">
-					</div>
-					<div class="col flex-col align-items-center">
-						<p>77 Avg</p><br>
-						<p>80% humidity</p><br>
-						<p>68 mph</p><br>
+			<!--Weather-->
+			<div class="row align-items-center">
+				<div class="col">
+					<h2 class="text-center">Weather</h2>
+				</div>
+				<div class="col-5">
+					<h2 class="text-center">Travel Safety</h2>
+				</div>
+				<hr>
+			</div>
+			<div class="row align-items-center">
+				<div class="col">
+					<div class="row d-flex">
+						<div class="col d-flex flex-column align-items-center" style="padding-top: 3px;">
+							<div class="col flex-col mx-auto border-bottom border-3 border-dark" style="padding-bottom: 3px;">
+								<img class="m-3" src="/static/img/sunny.png" style="width:130px; height:130px">
+							</div>
+							<div class="col flex-col align-items-center" style="padding-top: 5px;">
+								<p>77 Avg</p><br>
+								<p>80% humidity</p><br>
+								<p>68 mph</p><br>
+							</div>
+						</div>
+						<div class="col d-flex flex-column align-items-center">
+							<div class="col flex-col mx-auto border-bottom border-3 border-dark">
+								<img class="m-3" src="/static/img/rainy.jpg" style="width:130px; height:130px">
+							</div>
+							<div class="col flex-col" style="padding-top: 5px;">
+								<p>77 Avg</p><br>
+								<p>80% humidity</p><br>
+								<p>68 mph</p>
+							</div>
+						</div>
+						<div class="col d-flex flex-column align-items-center">
+							<div class="col flex-col mx-auto border-bottom border-3 border-dark">
+								<img class="m-3" src="/static/img/1994474.jpg" style="width:130px; height:130px">
+							</div>
+							<div class="col flex-col" style="padding-top: 5px;">
+								<p>Case Numbers: 100</p><br>
+								<p>Recent Variant: 100</p><br>
+								<p>Total Dead: 70</p>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-2 d-flex flex-column align-items-center">
-					<div class="col flex-col mx-auto">
-						<img class="m-3" src="/static/img/rainy.jpg" style="width:130px; height:px">
-					</div>
-					<div class="col flex-col">
-						<p>77 Avg</p><br>
-						<p>80% humidity</p><br>
-						<p>68 mph</p>
+				<div class="col-5">
+					<div class="col d-flex flex-column flex-grow-1 px-5">
+						<div class="row mx-auto border-bottom border-3 border-dark" style="padding-top: -5px;">
+							<div class="col" style="padding-top: 60px;">
+								<p>Total Dead: 70</p>
+							</div>
+							<div class="col">
+								<img class="m-3" src="/static/img/Covid.png" style="width:130px; height: 142px; padding-top: 12px;">
+							</div>
+						</div>
+						<div class="col flex-col" style="padding-top: 5px;">
+							<p>{{ safety }}</p>
+						</div>
 					</div>
 				</div>
-				
-				<div class="col flex-col">
-					<div class="col flex-col mx-auto">
-						<p>Best Weather: It's gonna be sunny</p><br>
-						<p>Worst Weather: It's gonna be rainy</p><br>
-					</div>
-				</div> 
-				
+				<hr>
 			</div>
 			<!--Events-->
 			<h2 class="text-center">Events</h2>
@@ -62,23 +91,85 @@
 				<table class="table table-striped table-hover align-middle table-responsive my-5 w-auto" style="text-align: left; table-layout: fixed; background-color:white">
 					<thead>
 						<tr>
-							<th scope="col">Name</th>
-							<th scope="col"></th>
-							<th scope="col">URL</th>
+							<th scope="col" style="width:45%">Name</th>
+							<th class="pe-3" scope="col" style="width:7%"></th>
+							<th scope="col" style="width:auto;">URL</th>
 							<th scope="col" style="width:15%">Date</th>
 						</tr>
 					</thead>
 					<tbody>
-						{% for event in event_list %}
+						{% if events|length <= 10 %}
+						{% for event in events %}
 						<tr scope="row">
 							<td>{{ event["name"] }}</td>
-							<td><img src="{{ event['imgurl'] }}" class="mx-auto" style="width:72px; height:48px; border-radius:10px;"></td>
+							<td class="pe-3"><img src="{{ event['imgurl'] }}" class="mx-auto" style="width:72px; height:48px; border-radius:10px;"></td>
 							<td class="overflow-hidden"><a href="{{ event['url'] }}">{{ event['url'] }}</a></td>
 							<td>{{ event["date"] }}</td>
 						</tr>
 						{% endfor %}
+						{% else %}
+						{% for i in range(10) %}
+						<tr scope="row">
+							<td>{{ events[i]["name"] }}</td>
+							<td class="pe-3"><img src="{{ events[i]['imgurl'] }}" class="mx-auto" style="width:72px; height:48px; border-radius:10px;"></td>
+							<td class="overflow-hidden"><a href="{{ events[i]['url'] }}">{{ events[i]['url'] }}</a></td>
+							<td>{{ events[i]["date"] }}</td>
+						</tr>
+						{% endfor %}
+						{% endif %}
 					</tbody>
 				</table>
+				{% if events|length > 10 %}
+				<a href="/events" class="text-center" style="font-size:1.8rem">See more events</a>
+				{% endif %}
+			</div>
+			<!--Hotels-->
+			<h2 class="text-center">Hotels & Condos</h2>
+			<hr>
+			<div class="mx-auto px-5">
+				<table class="table table-striped table-hover align-middle table-responsive my-5 w-auto" style="text-align: left; table-layout: fixed; background-color:white">
+					<thead>
+						<tr>
+							<th scope="col" style="width:35%">Name</th>
+							<th class="pe-3" scope="col" style="width:5%"></th>
+							<th scope="col" style="width:auto">URL</th>
+							<th scope="col" style="width:15%">Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if hotels|length <= 10 %}
+						{% for hotel in hotels %}
+						<tr scope="row">
+							<td>{{ hotel["name"] }}</td>
+							<td class="pe-3"><img src="{{ hotel['imgurl'] }}" class="mx-auto" style="width:48px; height:48px; border-radius:10px;"></td>
+							<td class="overflow-hidden"><a href="{{ hotel['url'] }}">{{ hotel['url'] }}</a></td>
+							<td>${{ hotel["price"] }}/day</td>
+						</tr>
+						{% endfor %}
+						{% else %}
+						{% for i in range(10) %}
+						<tr scope="row">
+							<td>{{ hotels[i]["name"] }}</td>
+							<td class="pe-3"><img src="{{ hotels[i]['imgurl'] }}" class="mx-auto" style="width:48px; height:48px; border-radius:10px;"></td>
+							<td class="overflow-hidden"><a href="{{ hotels[i]['url'] }}">{{ hotels[i]['url'] }}</a></td>
+							<td>${{ hotels[i]["price"] }}/day</td>
+						</tr>
+						{% endfor %}
+						{% endif %}
+					</tbody>
+				</table>
+				{% if hotels|length > 10 %}
+				<a href="/hotels" class="text-center" style="font-size:1.8rem">See more hotels & condos</a>
+				{% endif %}
+			</div>
+		</div>
+		<!--Footer-->
+		<div class="row align-items-center p-3 mt-5" style="background-color: #257dff; color: white; height:75px">
+			<div class="col">
+				<p>By Nate Kite, Yushus Komarlu, Venn Reddy, and Daniel Grigsby</p>
+			</div>
+			<div class="col">
+				<p class="text-end">Developed and submitted for UGAHacks8</p>
 			</div>
 		</div>
 	</div>

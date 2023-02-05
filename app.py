@@ -19,8 +19,11 @@ def draft():
 
 		# Get API results
 		event_list = events.get_events(country, city, start_date, end_date)
+		hotel_list = events.get_hotels(city, start_date, end_date)
+		safety_check = events.get_safety(country)
 
 		# Print form data (For debugging)
+		# print(f"HOTELS:\n\n {hotel_list}")
 		# print(event_list)
 		# print(f"country: {country}")
 		# print(f"city: {city}")
@@ -28,7 +31,14 @@ def draft():
 		# print(f"end_date: {end_date}")
 
 		# Render template
-		return render_template("results.html", country=country, city=city, event_list=event_list)
+		return render_template("results.html",
+							country=country,
+							city=city,
+							events=event_list,
+							hotels=hotel_list,
+							start_date=start_date,
+							end_date=end_date,
+							safety=safety_check)
 
 	else:
 		return redirect("/", code=302)
