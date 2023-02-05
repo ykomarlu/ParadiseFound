@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:light,regular,medium,italic,bold" rel="stylesheet" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<link href="/static/css/styles.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<title>Paradise Found — Events</title>
+	<link rel="icon" href="/static/img/favicon.png">
+</head>
+<body style="background-color: #95c0ff;"">
+	<div class="container" style="background-color:white">
+		<!--Header-->
+		<div class="row align-items-center p-3 mb-4" style="background-color: #257dff; color: white">
+			<div class="col">
+				<h1>{{ city }},</h1>
+				<h3 style="font-size:2.8rem">{{ country }}</h3>
+			</div>
+			<div class="col">
+				<h2 class="text-end align-middle">Paradise Found</h2>
+			</div>
+		</div>
+		<div class="px-3">
+			<!--Events-->
+			<h2 class="text-center">Events</h2>
+			<hr>
+			<div class="mx-auto px-5">
+				<table class="table table-striped table-hover align-middle table-responsive my-5 w-auto" style="text-align: left; table-layout: fixed; background-color:white">
+					<thead>
+						<tr>
+							<th scope="col" style="width:45%">Name</th>
+							<th class="pe-3" scope="col" style="width:7%"></th>
+							<th scope="col" style="width:auto;">URL</th>
+							<th scope="col" style="width:15%">Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for event in events %}
+						<tr scope="row">
+							<td>{{ event["name"] }}</td>
+							<td class="pe-3"><img src="{{ event['imgurl'] }}" class="mx-auto" style="width:72px; height:48px; border-radius:10px;"></td>
+							<td class="overflow-hidden"><a href="{{ event['url'] }}">{{ event['url'] }}</a></td>
+							<td>{{ event["date"] }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row align-items-center p-3 mt-5" style="background-color: #257dff; color: white; height:75px">
+			<div class="col">
+				<p>By Nate Kite, Yushus Komarlu, Venn Reddy, and Daniel Grigsby</p>
+			</div>
+			<div class="col">
+				<p class="text-end">Developed and submitted for UGAHacks8</p>
+			</div>
+		</div>
+	</body>
+	</html>
