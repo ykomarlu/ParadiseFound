@@ -50,4 +50,7 @@ h3 {
 	--bs-btn-hover-color: black;
     --bs-btn-hover-bg: yellow;
 	--bs-btn-hover-border-color: #a7a700;
+	--bs-btn-active-bg: yellow;
+	--bs-btn-active-border-color: yellow;
+	--bs-btn-active-color: black;
 }

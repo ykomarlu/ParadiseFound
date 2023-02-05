@@ -9,10 +9,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>SafeTravels Results</title>
 </head>
-<body>
-	<div class="container">
+<body style="background-color: #95c0ff;"">
+	<div class="container" style="background-color:white">
 		<!--Header-->
-		<div class="row align-items-center my-3 px-3">
+		<div class="row align-items-center p-3 mb-4" style="background-color: #257dff; color: white">
 			<div class="col">
 				<h1>{{ city }},</h1>
 				<h3>{{ country }}</h3>
@@ -21,52 +21,60 @@
 				<h2 class="text-end align-middle">SafeTravels</h2>
 			</div>
 		</div>
-		<hr>
-		<!--Weather and crime-->
-		<div class="row align-items-center px-3">
-			<div class="col">
-				<div class="row align-items-center">
-					<div class="col">
-						<img class="m-3" src="/static/img/sunny.png" style="width:130px; height:125px">
-						<p>It's hot!</p>
+		<div class="px-3">
+			<!--Weather and crime-->
+			<h2 class="text-center">Weather</h2>
+			<hr>
+			<div class="row align-items-center px-3">
+				<div class="col">
+					<div class="row align-items-center">
+						<div class="col">
+							<img class="m-3" src="/static/img/sunny.png" style="width:130px; height:125px">
+							<p>It's hot!</p>
+						</div>
+						<div class="col">
+							Australia is normally hot!
+						</div>
 					</div>
-					<div class="col">
-						Australia is normally hot!
+					<div class="row align-items-center">
+						<div class="col">
+							<img class="m-3" src="/static/img/rainy.jpg" style="width:130px; height:px">
+							<p>It's raining!</p>
+						</div>
+						<div class="col">
+							I think Australia is usually dry but whatever!
+						</div>
 					</div>
 				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<img class="m-3" src="/static/img/rainy.jpg" style="width:130px; height:px">
-						<p>It's raining!</p>
-					</div>
-					<div class="col">
-						I think Australia is usually dry but whatever!
-					</div>
+				<div class="col">
+					<p>You might get robbed tho</p>
 				</div>
 			</div>
-			<div class="col">
-				<p>You might get robbed tho</p>
+			<!--Events-->
+			<h2 class="text-center">Events</h2>
+			<hr>
+			<div class="mx-auto px-5">
+				<table class="table table-striped table-hover align-middle table-responsive my-5 w-auto" style="text-align: left; table-layout: fixed; background-color:white">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col"></th>
+							<th scope="col">URL</th>
+							<th scope="col" style="width:15%">Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for event in event_list %}
+						<tr scope="row">
+							<td>{{ event["name"] }}</td>
+							<td><img src="{{ event['imgurl'] }}" class="mx-auto" style="width:72px; height:48px; border-radius:10px;"></td>
+							<td class="overflow-hidden"><a href="{{ event['url'] }}">{{ event['url'] }}</a></td>
+							<td>{{ event["date"] }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
-		</div>
-		<hr>
-		<div class="section mx-auto">
-			<h2>Events</h2>
-			<table class="table table-striped table-responsive my-5 w-100" style="text-align: left; table-layout: fixed">
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Birthday</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for event in events %}
-					<tr scope="row">
-						<td>{{ event["name"] }}</td>
-						<td>{{ event["url"] }}</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			</table>
 		</div>
 	</div>
 </div>
